@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Slate</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Latest compiled and minified CSS -->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <style type="text/css">
+    .jumbotron {
+        text-align: center;
+    }
+
+    button {
+        width: 100px;
+        height: 40px;
+    }
+
+    .top-buffer {
+        margin-top: 20px;
+    }
+
+    textarea {
+        resize: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="nav nav-pills nav-fill nav-justified">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Slack</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Slate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">About</a>
+            </li>
+        </ul>
+        <div class="jumbotron">
+            <h1>Tell me what to send to Slack!</h1>
+            <h4>#we-fish-sail-fish</h4>
+        </div>
+        <form>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input required type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Please input yout message message</label>
+                        <textarea required class="form-control required" id="message" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Do you have any link to share</label>
+                        <input type="text" class="form-control" id="link" placeholder="https://...">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                    <button type="submit" class="btn btn-primary" id="submit" onclick="ajaxcall()">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div id="warn" class="alert alert-warning top-buffer" style="display:none">
+            <strong>Warning!</strong>
+            <span id='error'></span>
+        </div>
+        <footer class="footer">
+            <p>&copy; Kiran Gautam </p>
+        </footer>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+</body>
+
+</html>
