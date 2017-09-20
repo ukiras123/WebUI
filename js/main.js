@@ -1,4 +1,5 @@
 function ajaxcall() {
+    console.log("Inside Ajax")
     var name = $('#name').val();
     var message = $('#message').val();
     var link = $('#link').val();
