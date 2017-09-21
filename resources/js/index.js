@@ -5,6 +5,9 @@ function ajaxcall() {
     var link = $('#link').val();
     var oceanx_icon_url = "https://lh3.googleusercontent.com/gQzJTIwghRjVhP3c1hfSHfk1uXcVVeUyTidWxBRsM1JBmrgZgqdFksaQ6L14FemXxJ7o1BBNbxVKCFl0asrE3oUS9xBSxUcUmfKHv1_axZO5jSf_HAXPyz9Rq32EvGXua8KkMZa-7A=w247-h230-no";
     var god_icon = "https://previews.123rf.com/images/martialred/martialred1511/martialred151100007/47998755-Eye-of-providence-or-all-seeing-eye-of-God-flat-icon-for-apps-and-websites-Stock-Vector.jpg";
+    var default_url = "https://hooks.slack.com/services/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"
+    var kiran_url = "https://hooks.slack.com/services/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"
+    
     var areEqual = name.toUpperCase() === "OCEANX";
     if (areEqual == true) {
         default_icon = oceanx_icon_url;
@@ -25,11 +28,12 @@ function ajaxcall() {
         $('#name').css('border-color','');
         $('#message').css('border-color','red');
     } else {
-        $('#message').css('border-color','');
-        $('#name').css('border-color','');
+        $('#message').css('border-color','').val('');
+        $('#name').css('border-color','').val('');
+        $('#link').css('border-color','').val('');
         $.ajax({
             type: 'POST',
-            url: 'https://hooks.slack.com/services/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',
+            url: default_url,
             data: JSON.stringify(payload),
             header: { 'Content-Type': 'application/json' }
         }).then(function(result) {
