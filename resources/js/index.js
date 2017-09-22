@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
+    console.log( "Doc is ready!" );
     showQuote();
 });
 
@@ -64,14 +64,13 @@ $('input').click(function() {
 
 function showQuote()
 {
+    console.log("showQuote")
     $.ajax({
         url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
         type: 'GET',
         header: { 'Content-Type': 'application/json' },
         success: function(data) {
             var post = data.shift();
-            console.log(post.title);
-            console.log(post.content);
             var quote = post.content;
             $('#quote').html(quote);
             $('#quote').show();
