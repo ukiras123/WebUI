@@ -1,3 +1,8 @@
+$( document ).ready(function() {
+    console.log( "ready!" );
+    showQuote();
+});
+
 function ajaxcall() {
     console.log("Inside Ajax")
     var name = $('#name').val();
@@ -49,40 +54,32 @@ function ajaxcall() {
 
 $('input').click(function() {
     var status = $(this).val();
+    console.log(status)
     if (status == 'on') {
-        $.ajax({
-            url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
-            type: 'GET',
-            header: { 'Content-Type': 'application/json' },
-            success: function(data) {
-                var post = data.shift();
-                console.log(post.title);
-                console.log(post.content);
-                var quote = post.content;
-                $('#quote').html(quote);
-                $('#quote').show();
-                animateQuote();
-
-                // If the Source is available, use it. Otherwise hide it.
-                if (typeof post.custom_meta !== 'undefined' && typeof post.custom_meta.Source !== 'undefined') {
-                    $('#quote-source').html('Source:' + post.custom_meta.Source);
-                } else {
-                    $('#quote-source').text('');
-                }
-            },
-            cache: false
-        });
-
-        console.log(quote);
-
-        // $('#quote').html("hello");
-        // $('#quote').show();
-        // animateQuote();
+        showQuote();
     } else {
         $('#quote').hide();
-
     }
 });
+
+function showQuote()
+{
+    $.ajax({
+        url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+        type: 'GET',
+        header: { 'Content-Type': 'application/json' },
+        success: function(data) {
+            var post = data.shift();
+            console.log(post.title);
+            console.log(post.content);
+            var quote = post.content;
+            $('#quote').html(quote);
+            $('#quote').show();
+            animateQuote();
+        },
+        cache: false
+    });
+}
 
 function animateQuote() {
     var text = $(".split");
