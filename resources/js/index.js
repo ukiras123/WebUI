@@ -1,8 +1,3 @@
-$( document ).ready(function() {
-    console.log( "Doc is ready!" );
-    showQuote();
-});
-
 function ajaxcall() {
     console.log("Inside Ajax")
     var name = $('#name').val();
