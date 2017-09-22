@@ -136,7 +136,6 @@ input[value="on"]:checked~.lamp:before {
 .quote {
     margin-top: 200px;
     color: white;
-    size: 32;
 }
 
 .box {

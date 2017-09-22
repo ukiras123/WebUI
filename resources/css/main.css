@@ -26,5 +26,7 @@
         resize: none;
     }
 
+    .jumbotron {
+        background-color: rgba(7, 9, 9, 0.2);
+    }
 
-   
