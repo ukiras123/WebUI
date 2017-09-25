@@ -7,14 +7,14 @@ function ajaxcall() {
     var default_icon = "https://previews.123rf.com/images/martialred/martialred1511/martialred151100007/47998755-Eye-of-providence-or-all-seeing-eye-of-God-flat-icon-for-apps-and-websites-Stock-Vector.jpg";
     var default_url = "https://hooks.slack.com/services/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"
     var kiran_url = "https://hooks.slack.com/services/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"
-    var peter_icon = "https://lh3.googleusercontent.com/5Fh7tjuEUeguHxnn7cHWMi9EbzrueGIzCSb9L4_-puSDR00JDpsfysFR1i7e_JVnTkLsalSpz-H-bigrFvxL053ylEh5CQXTGPN9tVARnr5pKBF2AAipjYP8WpnMROL17s5amKh7G1F2B3owpmcV4CFCnofPWAg8NA_ASfd3S1uxVYBqqCY4GgfoIKLk1vPuSdtu5LQw2_1apf3EA1isD9eX3lkHN_x0YZ0t_mkw5hYDzIPXldtdp9Zso1iNPIPfofdkbEG3eVjiOvWU1nNtkG7ix-hIBD1ItBxb0FfLI3fDhfXJsq2BZlHH8fac_iDCK6Cy7IOZe7KX0LH0m1sA2twi8LVTo8lzIO_ohY0HgEzDiHo-dccwOH9DQsh8DcxK3BmU3Y2xKbcXqN3Xe6mmRJo9JL8_x7bA-l6k6AF5Um5_3ULglkBjohyymTsRYQuN0Mt-PC3o595Dk6f5_nJaqn1rNgx5lPBQBpFWCFKAVqaKpBIAdC5eSNxizwjxfLi3eCFWwKoXt-AYtIA9M_2uFmCxC2tr16APWw3CJ7d12eeCaiFygO-xJCKUvQxoFfoJZzcrHB8WW8-q2ns4Y55fsoN8OydPX3nu7WYW406z_qrpcrC-OJngjDDMfKLO9oQC53vlxOyDxH906QT3QSyF2ma9mvqbLE671dM=w810-h798-no";
-
+    var peter_icon = "https://goo.gl/v1onND"
     var areEqual = name.toLowerCase() === "oceanx";
     if (areEqual == true) {
         default_icon = oceanx_icon_url;
     }
     if (areEqual = name.toLowerCase() == "ppanec_ocx")
     {
+        console.log("ppanec_ocx")
         default_icon = peter_icon;
     }
     var payload = {
