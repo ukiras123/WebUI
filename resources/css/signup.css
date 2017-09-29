@@ -14,18 +14,6 @@ html * {
   box-sizing: border-box;
 }
 
-body {
-  font-size: 100%;
-  font-family: "PT Sans", sans-serif;
-  color: #505260;
-  background-color: #fff;
-}
-
-a {
-  color: #2f889a;
-  text-decoration: none;
-}
-
 img {
   max-width: 100%;
 }
@@ -35,6 +23,7 @@ input, textarea {
   font-size: 16px;
   font-size: 1rem;
 }
+
 input::-ms-clear, textarea::-ms-clear {
   display: none;
 }
@@ -47,7 +36,7 @@ Main components
 header[role=banner] {
   position: relative;
   height: 50px;
-  background: #343642;
+  background: rgba(7, 9, 9, 0.39);
 }
 header[role=banner] #cd-logo {
   float: left;
@@ -452,7 +441,7 @@ xsigin/signup popup
 }
 
 .cd-form-bottom-message {
-  position: absolute;
+  position: relative;
   width: 100%;
   left: 0;
   bottom: -30px;
