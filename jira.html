@@ -3,25 +3,34 @@
 
 <head>
     <title>Kiran</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <meta name="Description" content="Webpage full of surprises.">
     <link rel="icon" href="resources/images/icon.png">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.10.1/bootstrap-social.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="resources/css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/signup.css">
 
 
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-106887604-1', 'auto');
         ga('send', 'pageview');
@@ -32,47 +41,151 @@
 </head>
 
 <body>
-    <div class="container">
-        <ul class="nav nav-pills nav-fill nav-justified bottom-bufferX10">
-            <li class="nav-item">
-                <a id="nav-home" class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-slack" class="nav-link" href="slack.html">Slack</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-slate" class="nav-link" href="slate.html">Slate</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-jira" class="nav-link active" href="jira.html">Jira</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-about" class="nav-link" href="about.html">About</a>
-            </li>
-        </ul>
-        <hr>
+<div class="container">
+    <ul class="nav nav-pills nav-fill nav-justified bottom-bufferX10">
+        <li class="nav-item">
+            <a id="nav-home" class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+            <a id="nav-slack" class="nav-link" href="slack.html">Slack</a>
+        </li>
+        <li class="nav-item">
+            <a id="nav-slate" class="nav-link" href="slate.html">Slate</a>
+        </li>
+        <li class="nav-item">
+            <a id="nav-jira" class="nav-link active" href="jira.html">Jira</a>
+        </li>
+        <li class="nav-item">
+            <a id="nav-about" class="nav-link" href="about.html">About</a>
+        </li>
+    </ul>
+    <hr>
 
 
+    <div class='row'>
+        <div class='col'>
+            <header role="banner">
+                <nav class="main-nav">
+                    <ul>
+                        <!-- inser more links here -->
+                        <li><a class="cd-signin" href="#0">Sign in</a></li>
+                        <li><a class="cd-signup" href="#0">Sign up</a></li>
+                    </ul>
+                </nav>
+            </header>
 
+            <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+                <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+                    <ul class="cd-switcher">
+                        <li><a href="#0">Sign in</a></li>
+                        <li><a href="#0">New account</a></li>
+                    </ul>
 
+                    <div id="cd-login"> <!-- log in form -->
+                        <form class="cd-form">
+                            <p class="fieldset">
+                                <label class="image-replace cd-email" for="signin-email">E-mail</label>
+                                <input class="full-width has-padding has-border" id="signin-email" type="email"
+                                       placeholder="E-mail">
+                                <span class="cd-error-message">Error message here!</span>
+                            </p>
 
+                            <p class="fieldset">
+                                <label class="image-replace cd-password" for="signin-password">Password</label>
+                                <input class="full-width has-padding has-border" id="signin-password" type="text"
+                                       placeholder="Password">
+                                <a href="#0" class="hide-password">Hide</a>
+                                <span class="cd-error-message">Error message here!</span>
+                            </p>
 
+                            <p class="fieldset">
+                                <input type="checkbox" id="remember-me" checked>
+                                <label for="remember-me">Remember me</label>
+                            </p>
 
-        <footer class="footer top-bufferX20">
-            <div class="row">
-                <div class="col">
-                    <p>&copy; Kiran Gautam </p>
-                </div>
-                <div class="col text-right" hidden>
-                    <a onclick="" class="btn btn-social-icon btn-lg btn-facebook"><i class="fa fa-facebook"></i></a>
-                    <a onclick="" class="btn btn-social-icon btn-lg btn-linkedin"><i class="fa fa-linkedin"></i></a>
-                </div>
-            </div>
-        </footer>
+                            <p class="fieldset">
+                                <input class="full-width" type="submit" value="Login">
+                            </p>
+                        </form>
+
+                        <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+                        <!-- <a href="#0" class="cd-close-form">Close</a> -->
+                    </div> <!-- cd-login -->
+
+                    <div id="cd-signup"> <!-- sign up form -->
+                        <form class="cd-form">
+                            <p class="fieldset">
+                                <label class="image-replace cd-username" for="signup-username">Username</label>
+                                <input class="full-width has-padding has-border" id="signup-username" type="text"
+                                       placeholder="Username">
+                                <span class="cd-error-message">Error message here!</span>
+                            </p>
+
+                            <p class="fieldset">
+                                <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                                <input class="full-width has-padding has-border" id="signup-email" type="email"
+                                       placeholder="E-mail">
+                                <span class="cd-error-message">Error message here!</span>
+                            </p>
+
+                            <p class="fieldset">
+                                <label class="image-replace cd-password" for="signup-password">Password</label>
+                                <input class="full-width has-padding has-border" id="signup-password" type="password"
+                                       placeholder="Password">
+                                <a href="#0" class="hide-password">Show</a>
+                                <span class="cd-error-message">Error message here!</span>
+                            </p>
+
+                            <p class="fieldset">
+                                <input class="full-width has-padding" type="submit" value="Create account">
+                            </p>
+                        </form>
+
+                        <!-- <a href="#0" class="cd-close-form">Close</a> -->
+                    </div> <!-- cd-signup -->
+
+                    <div id="cd-reset-password"> <!-- reset password form -->
+                        <p class="cd-form-message">Lost your password? Please enter your email address. You will receive
+                            a link to create a new password.</p>
+
+                        <form class="cd-form">
+                            <p class="fieldset">
+                                <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                                <input class="full-width has-padding has-border" id="reset-email" type="email"
+                                       placeholder="E-mail">
+                                <span class="cd-error-message">Error message here!</span>
+                            </p>
+
+                            <p class="fieldset">
+                                <input class="full-width has-padding" type="submit" value="Reset password">
+                            </p>
+                        </form>
+
+                        <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+                    </div> <!-- cd-reset-password -->
+                    <a href="#0" class="cd-close-form">Close</a>
+                </div> <!-- cd-user-modal-container -->
+            </div> <!-- cd-user-modal -->
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-</body>
 
+
+    <footer class="footer top-bufferX20">
+        <div class="row">
+            <div class="col">
+                <p>&copy; Kiran Gautam </p>
+            </div>
+            <div class="col text-right" hidden>
+                <a onclick="" class="btn btn-social-icon btn-lg btn-facebook"><i class="fa fa-facebook"></i></a>
+                <a onclick="" class="btn btn-social-icon btn-lg btn-linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="resources/js/signup.js"></script>
+</body>
 
 
 </html>
