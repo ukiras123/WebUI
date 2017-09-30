@@ -11,8 +11,9 @@ jQuery(document).ready(function ($) {
         $back_to_login_link = $form_forgot_password.find('.cd-form-bottom-message a'),
         $back_to_login_link2 = $form_signup_success.find('.cd-form-bottom-message a'),
         $success_message = $form_signup_success.find('#success-message'),
-        $main_nav = $('.main-nav');
-    $signup_form = $("#signup-form");
+        $main_nav = $('.main-nav'),
+        $signup_form = $("#signup-form"),
+        $login_form = $("#login-form");
     //open modal
     $main_nav.on('click', function (event) {
 
@@ -111,15 +112,24 @@ jQuery(document).ready(function ($) {
         $form_signup_success.addClass('is-selected');
     }
 
+    function success_selected() {
+        $success_message.html('Welcome ');
+        $form_login.removeClass('is-selected');
+        $form_signup.removeClass('is-selected');
+        $form_forgot_password.removeClass('is-selected');
+        $form_signup_success.removeClass('is-selected')
+        $form_signup_success.addClass('is-selected');
+    }
+
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     //REMOVE THIS - it's just to show error messages
-    $form_login.find('input[type="submit"]').on('click', function (event) {
-        event.preventDefault();
-        $form_login.find('input[type="text"]').toggleClass('has-error').next('span').toggleClass('is-visible');
-    });
+    // $form_login.find('input[type="submit"]').on('click', function (event) {
+    //     event.preventDefault();
+    //     $form_login.find('input[type="text"]').toggleClass('has-error').next('span').toggleClass('is-visible');
+    // });
 
 
     function signupClear() {
@@ -130,6 +140,11 @@ jQuery(document).ready(function ($) {
         $form_signup.find('input[id="signup-password"]').val('');
         $form_signup.find('input[id="signup-jirauser"]').val('');
         $form_signup.find('input[id="signup-jirapass"]').val('');
+    }
+
+    function loginClear() {
+       $form_login.find('input[id="signin-user"]').val('');
+       $form_login.find('input[id="signin-password"]').val('');
     }
 
 
@@ -176,9 +191,52 @@ jQuery(document).ready(function ($) {
         });
     });
 
+
+    $login_form.on('submit', function (event) {
+        userSignInErrorClear()
+        event.preventDefault();
+        var userName = $form_login.find('input[id="signin-user"]').val();
+        var password = $form_login.find('input[id="signin-password"]').val();
+        var signup_url = 'http://ec2-54-67-69-244.us-west-1.compute.amazonaws.com:8080/user/signup';
+        var temp_signup_url = 'http://340a7d6f.ngrok.io/user/login';
+        var payload = {
+            "userName": userName,
+            "password": password
+        }
+        console.log(payload);
+        $.ajax({
+            type: 'POST',
+            header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            contentType: 'application/json',
+            url: temp_signup_url,
+            data: JSON.stringify(payload),
+            success: function (result, textStatus, xhr) {
+                var status = xhr.status;
+                console.log('success');
+                console.log(result);
+                loginClear();
+                success_selected();
+                userSignInErrorClear()
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log('not success');
+                userSignInError(XMLHttpRequest.responseText);
+            }
+        });
+    });
+
+    function userSignInError(message) {
+        $form_login.find('input[id="signin-user"]').next('span').html(message);
+        $form_login.find('input[id="signin-user"]').addClass('has-error').next('span').addClass('is-visible');
+    }
+
+    function userSignInErrorClear() {
+        $form_login.find('input[id="signin-user"]').removeClass('has-error').next('span').removeClass('is-visible');
+    }
+
     function userSignUpError(message) {
         $form_signup.find('input[id="signup-username"]').next('span').html(message);
-        $error_span = $form_signup.find('input[id="signup-username"]').addClass('has-error').next('span').addClass('is-visible');
+        $form_signup.find('input[id="signup-username"]').addClass('has-error').next('span').addClass('is-visible');
     }
 
     function userSignUpErrorClear() {
