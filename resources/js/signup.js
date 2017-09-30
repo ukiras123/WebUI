@@ -174,7 +174,7 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             contentType: 'application/json',
-            url: temp_signup_url,
+            url: signup_url,
             data: JSON.stringify(payload),
             success: function (result, textStatus, xhr) {
                 var status = xhr.status;
@@ -208,7 +208,7 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             contentType: 'application/json',
-            url: temp_signup_url,
+            url: signup_url,
             data: JSON.stringify(payload),
             success: function (result, textStatus, xhr) {
                 var status = xhr.status;
