@@ -53,6 +53,10 @@
             return null;
         }
 
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
         function checkCookie() {
             console.log("Checking Cookie.");
             if (document.cookie == false || readCookie("userName") == null) {
@@ -65,7 +69,7 @@
         window.document.onload = checkCookie();
 
         function welcome() {
-            $('#greetings').html('Welcome Home,'+ readCookie('firstName')+'.');
+            $('#greetings').html('Welcome Home, '+ capitalizeFirstLetter(readCookie('firstName'))+'.');
         }
     </script>
 

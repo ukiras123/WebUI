@@ -38,6 +38,32 @@
     </script>
 
 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script>
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+        function checkCookie() {
+            console.log("Checking Cookie.");
+            if (document.cookie == false || readCookie("userName") == null) {
+                console.log("No Cookie.");
+            } else if (readCookie("userName") != null) {
+                window.location.href = "jira.html";
+            }
+        }
+        window.document.onload = checkCookie();
+    </script>
+
+
 </head>
 
 <body>
@@ -219,8 +245,7 @@
         </div>
     </footer>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
+
 <script src="resources/js/signup.js"></script>
 <script src="resources/js/cookie.js"></script>
 </body>
