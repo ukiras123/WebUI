@@ -103,7 +103,7 @@ jQuery(document).ready(function ($) {
     }
 
     function success_selected(name, user) {
-        $success_message.html('Welcome '+capitalizeFirstLetter(name)+', you are now registered.<br><h1>UserName: '+user+'</h1>');
+        $success_message.html('Welcome ' + capitalizeFirstLetter(name) + ', you are now registered.<br><h1>UserName: ' + user + '</h1>');
         $form_login.removeClass('is-selected');
         $form_signup.removeClass('is-selected');
         $form_forgot_password.removeClass('is-selected');
@@ -118,9 +118,9 @@ jQuery(document).ready(function ($) {
     //REMOVE THIS - it's just to show error messages
     $form_login.find('input[type="submit"]').on('click', function (event) {
         event.preventDefault();
-        var login_url = 'http://ec2-54-67-69-244.us-west-1.compute.amazonaws.com:8080/user/login'
         $form_login.find('input[type="text"]').toggleClass('has-error').next('span').toggleClass('is-visible');
     });
+
 
     function signupClear() {
         $form_signup.find('input[id="signup-username"]').val('');
@@ -134,7 +134,7 @@ jQuery(document).ready(function ($) {
 
 
     $signup_form.on('submit', function (event) {
-
+        userSignUpErrorClear();
         event.preventDefault();
         var userName = $form_signup.find('input[id="signup-username"]').val();
         var firstName = $form_signup.find('input[id="signup-firstname"]').val();
@@ -160,16 +160,30 @@ jQuery(document).ready(function ($) {
             header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             contentType: 'application/json',
             url: temp_signup_url,
-            data: JSON.stringify(payload)
-        }).then(function (result) {
-            console.log('success');
-            console.log(result);
-            success_selected(result['firstName'], result['userName']);
-            signupClear();
+            data: JSON.stringify(payload),
+            success: function (result, textStatus, xhr) {
+                var status = xhr.status;
+                console.log('success');
+                console.log(result);
+                success_selected(result['firstName'], result['userName']);
+                signupClear();
+                userSignUpErrorClear();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log('not success');
+                userSignUpError(XMLHttpRequest.responseText);
+            }
         });
-
     });
 
+    function userSignUpError(message) {
+        $form_signup.find('input[id="signup-username"]').next('span').html(message);
+        $error_span = $form_signup.find('input[id="signup-username"]').addClass('has-error').next('span').addClass('is-visible');
+    }
+
+    function userSignUpErrorClear() {
+        $form_signup.find('input[id="signup-username"]').removeClass('has-error').next('span').removeClass('is-visible');
+    }
 
 //credits https://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
     jQuery.fn.putCursorAtEnd = function () {
