@@ -197,8 +197,8 @@ jQuery(document).ready(function ($) {
         event.preventDefault();
         var userName = $form_login.find('input[id="signin-user"]').val();
         var password = $form_login.find('input[id="signin-password"]').val();
-        var signup_url = 'http://ec2-54-67-69-244.us-west-1.compute.amazonaws.com:8080/user/signup';
-        var temp_signup_url = 'http://340a7d6f.ngrok.io/user/login';
+        var login_url = 'http://ec2-54-67-69-244.us-west-1.compute.amazonaws.com:8080/user/login';
+        var temp_login_url = 'http://340a7d6f.ngrok.io/user/login';
         var payload = {
             "userName": userName,
             "password": password
@@ -208,7 +208,7 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             contentType: 'application/json',
-            url: signup_url,
+            url: login_url,
             data: JSON.stringify(payload),
             success: function (result, textStatus, xhr) {
                 var status = xhr.status;
