@@ -37,6 +37,7 @@ header[role=banner] {
   position: relative;
   height: 50px;
   background: rgba(7, 9, 9, 0.39);
+
 }
 header[role=banner] #cd-logo {
   float: left;
@@ -83,6 +84,7 @@ header[role=banner]::after {
   height: 100%;
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-menu.svg") no-repeat center center;
   cursor: pointer;
+  border-radius: 25px;
 }
 .main-nav ul {
   position: absolute;
@@ -109,6 +111,7 @@ header[role=banner]::after {
   padding-left: 5%;
   background: #292a34;
   border-top: 1px solid #3b3d4b;
+  border-radius: 25px;
   color: #FFF;
 }
 @media only screen and (min-width: 768px) {
