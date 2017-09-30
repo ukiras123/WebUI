@@ -476,10 +476,10 @@ xsigin/signup popup
   }
 }
 
-#cd-login, #cd-signup, #cd-reset-password {
+#cd-login, #cd-signup, #cd-reset-password, #cd-success, #cd-failure {
   display: none;
 }
 
-#cd-login.is-selected, #cd-signup.is-selected, #cd-reset-password.is-selected {
+#cd-login.is-selected, #cd-signup.is-selected, #cd-reset-password.is-selected, #cd-success.is-selected {
   display: block;
 }
