@@ -16,7 +16,7 @@
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="resources/css/homepage.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/signup.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/jiraPage.css">
 
 
     <script>
@@ -37,10 +37,41 @@
 
     </script>
 
+    <!-- JQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script>
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function checkCookie() {
+            console.log("Checking Cookie.");
+            if (document.cookie == false || readCookie("userName") == null) {
+                console.log("No Cookie.");
+                window.location.href = "jira-auth.html";
+            } else if (readCookie("userName") != null) {
+                console.log("You have Cookie.");
+            }
+        }
+        window.document.onload = checkCookie();
+
+        function welcome() {
+            $('#greetings').html('Welcome Home,'+ readCookie('firstName')+'.');
+        }
+    </script>
 
 </head>
 
-<body>
+<body onload = 'welcome()'>
 <div class="container">
     <ul class="nav nav-pills nav-fill nav-justified bottom-bufferX10">
         <li class="nav-item">
@@ -53,7 +84,7 @@
             <a id="nav-slate" class="nav-link" href="slate.html">Slate</a>
         </li>
         <li class="nav-item">
-            <a id="nav-jira" class="nav-link active" href="jira.html">Jira</a>
+            <a id="nav-jira" class="nav-link active" href="jira-auth.html">Jira</a>
         </li>
         <li class="nav-item">
             <a id="nav-about" class="nav-link" href="about.html">About</a>
@@ -64,148 +95,18 @@
 
     <div class='row'>
         <div class='col'>
+
             <header role="banner">
+                <div id="greetings">Welcome Home.</div>
                 <nav class="main-nav">
                     <ul>
-                        <!-- inser more links here -->
-                        <li><a class="cd-signin" href="#0">Sign in</a></li>
-                        <li><a class="cd-signup" href="#0">Sign up</a></li>
+                        <li><a class="cd-signout" href="#0" id="signout">Sign Out</a></li>
                     </ul>
                 </nav>
             </header>
 
-            <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-                <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-                    <ul class="cd-switcher">
-                        <li><a href="#0">Sign in</a></li>
-                        <li><a href="#0">New account</a></li>
-                    </ul>
-
-                    <div id="cd-login"> <!-- log in form -->
-                        <form class="cd-form"  id = "login-form">
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signin-user">Username</label>
-                                <input class="full-width has-padding has-border" id="signin-user" type="text"
-                                       placeholder="UserName" required>
-                                <span class="cd-error-message">Invalid UserName</span>
-                            </p>
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-password" for="signin-password">Password</label>
-                                <input class="full-width has-padding has-border" id="signin-password" type="password"
-                                       placeholder="Password" required>
-                                <a href="#0" class="hide-password">Show</a>
-                                <span class="cd-error-message">Invalid Password</span>
-                            </p>
-
-                            <p class="fieldset">
-                                <input type="checkbox" id="remember-me">
-                                <label for="remember-me">Remember me</label>
-                            </p>
-
-                            <p class="fieldset">
-                                <input class="full-width" type="submit" value="Login">
-                            </p>
-                        </form>
-                        <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
-
-                        <!-- <a href="#0" class="cd-close-form">Close</a> -->
-                    </div> <!-- cd-login -->
-
-                    <div id="cd-signup"> <!-- sign up form -->
-                        <form class="cd-form" id = "signup-form">
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signup-username">Username</label>
-                                <input class="full-width has-padding has-border" id="signup-username" type="text"
-                                       placeholder="Username*" required>
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signup-firstname">Username</label>
-                                <input class="full-width has-padding has-border" id="signup-firstname" type="text"
-                                       placeholder="First Name*" required>
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signup-lastname">Username</label>
-                                <input class="full-width has-padding has-border" id="signup-lastname" type="text"
-                                       placeholder="Last Name*" required>
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                                <input class="full-width has-padding has-border" id="signup-email" type="email"
-                                       placeholder="E-mail*" required>
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-password" for="signup-password">Password</label>
-                                <input class="full-width has-padding has-border" id="signup-password" type="password"
-                                       placeholder="Password*" required>
-                                <a href="#0" class="hide-password">Show</a>
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signup-jirauser">Jira Username</label>
-                                <input class="full-width has-padding has-border" id="signup-jirauser" type="text"
-                                       placeholder="Jira User Name">
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-                            <p class="fieldset">
-                                <label class="image-replace cd-password" for="signup-jirapass">Password</label>
-                                <input class="full-width has-padding has-border" id="signup-jirapass" type="password"
-                                       placeholder="Jira Password">
-                                <a href="#0" class="hide-password">Show</a>
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-
-
-                            <p class="fieldset">
-                                <input class="full-width has-padding" type="submit" value="Create account">
-                            </p>
-                        </form>
-
-                        <!-- <a href="#0" class="cd-close-form">Close</a> -->
-                    </div> <!-- cd-signup -->
-
-                    <div id="cd-reset-password"> <!-- reset password form -->
-                        <p class="cd-form-message">Lost your password? Please enter your email address and we will reach out to you.</p>
-
-                        <form class="cd-form">
-                            <p class="fieldset">
-                                <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                                <input class="full-width has-padding has-border" id="reset-email" type="email"
-                                       placeholder="E-mail">
-                                <span class="cd-error-message">Error message here!</span>
-                            </p>
-
-                            <p class="fieldset">
-                                <input class="full-width has-padding" type="submit" value="Reset password">
-                            </p>
-                        </form>
-
-                        <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-                    </div> <!-- cd-reset-password -->
-
-                    <div id="cd-success"> <!-- success page -->
-                        <p class="cd-form-message" id="success-message" style = 'font-weight: bold;'>Success</p>
-                        <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-                    </div> <!-- cd-reset-password -->
-
-
-                    <a href="#0" class="cd-close-form">Close</a>
-                </div> <!-- cd-user-modal-container -->
-            </div> <!-- cd-user-modal -->
         </div>
     </div>
-
 
     <footer class="footer top-bufferX20">
         <div class="row">
@@ -221,8 +122,8 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-<script src="resources/js/signup.js"></script>
+<script src="resources/js/cookie.js"></script>
+<script src="resources/js/jiraPage.js"></script>
 </body>
 
 

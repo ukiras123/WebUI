@@ -151,12 +151,12 @@ header[role=banner]::after {
     line-height: normal;
     background: transparent;
   }
-  .main-nav a.cd-signin, .main-nav a.cd-signup {
+  .main-nav a.cd-signin, .main-nav a.cd-signup, a.cd-signout {
     padding: .6em 1em;
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 50em;
   }
-  .main-nav a.cd-signup {
+  .main-nav a.cd-signup, a.cd-signout{
     background: #2f889a;
     border: none;
   }

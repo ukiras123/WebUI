@@ -216,7 +216,10 @@ jQuery(document).ready(function ($) {
                 console.log(result);
                 loginClear();
                 success_selected();
-                userSignInErrorClear()
+                userSignInErrorClear();
+                createCookie('userName', result['userName'], 1);
+                createCookie('firstName', result['firstName'], 1);
+                window.location.href = "jira.html";
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log('not success');
@@ -259,4 +262,34 @@ jQuery(document).ready(function ($) {
             }
         });
     };
+
+
+
+
+
+    function createCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+        console.log('cookie created '+ name);
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
 });
