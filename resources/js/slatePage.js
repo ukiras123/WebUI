@@ -27,7 +27,7 @@ function clearFields() {
     $('#email').val('');
 }
 
-function disableFields() {
+function enableFields() {
     $('#regression-btn').removeAttr("disabled");
     $('#smoke-test-btn').removeAttr("disabled");
     $('#api-name').removeAttr("disabled");
@@ -36,7 +36,7 @@ function disableFields() {
 }
 
 
-function enableFields() {
+function disableFields() {
     $('#regression-btn').attr("disabled", "disabled");
     $('#smoke-test-btn').attr("disabled", "disabled");
     $('#api-name').attr("disabled", "disabled");
@@ -76,18 +76,23 @@ function triggerRegression() {
         contentType: 'application/json',
         url: url,
         data: JSON.stringify(payload),
-    }).then(function (result) {
-        console.log('success');
-        console.log(result.responseText);
-        $('#success-response').html(result['text']);
-        $('#success-div').show();
-    }, function (error) {
-        console.log('error');
-        console.log(error);
-        $('#error-response').html(error);
-        $('#error-div').show();
+        success: function(data){
+            console.log('success');
+            console.log(data);
+            $('#success-response').html(data['text']);
+            $('#success-div').show();
+            enableFields();
+        },
+        error: function(error) {
+            console.log('error');
+            var errorBody = error.responseJSON;
+            console.log(errorBody.responseJSON);
+            $('#error-response').html(errorBody['errorMessage']);
+            $('#error-div').show();
+            console.log(error.responseText); // @text = response error, it is will be errors: 324, 500, 404 or anythings else
+            enableFields();
+        }
     });
-    enableFields();
 }
 
 
