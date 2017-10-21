@@ -3,24 +3,32 @@
 
 <head>
     <title>Kiran</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <meta name="Description" content="Webpage full of surprises.">
     <link rel="icon" href="resources/images/icon.png">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.10.1/bootstrap-social.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="resources/css/main.css">
 
 
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-106887604-1', 'auto');
         ga('send', 'pageview');
@@ -30,71 +38,72 @@
 </head>
 
 <body>
-    <div class="container">
-        <ul class="nav nav-pills nav-fill nav-justified bottom-bufferX10">
-            <li class="nav-item">
-                <a id="nav-home" class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-slack" class="nav-link active" href="slack.html">Slack</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-slate" class="nav-link" href="slate.html">Slate</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-jira" class="nav-link" href="jira-auth.html">Jira</a>
-            </li>
-            <li class="nav-item">
-                <a id="nav-about" class="nav-link" href="about.html">About</a>
-            </li>
-        </ul>
-        <hr>
+<div class="container">
+    <ul class="nav nav-pills nav-fill nav-justified bottom-bufferX10">
+        <li class="nav-item">
+            <a id="nav-home" class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+            <a id="nav-slack" class="nav-link active" href="slack.html">Slack</a>
+        </li>
+        <li class="nav-item">
+            <a id="nav-jira" class="nav-link" href="slate-auth.html">Slate</a>
+        </li>
+        <li class="nav-item">
+            <a id="nav-about" class="nav-link" href="about.html">About</a>
+        </li>
+    </ul>
+    <hr>
 
-        <div class="jumbotron">
-            <h1>Tell me what to send to Slack!</h1>
-            <h4>#we-fish-sail-fish</h4>
-        </div>
-        <form>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label>Your Name *</label>
-                        <input required type="text" class="form-control" id="name" placeholder="Name">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label>Please input yout message message *</label>
-                        <textarea required class="form-control required" id="message" rows="3"></textarea>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label>Do you have any link to share?</label>
-                        <input type="text" class="form-control" id="link" placeholder="https://...">
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col-md-auto">
-                    <button class="btn btn-primary" id="submit" type="button" onclick="ajaxcall()">Submit</button>
-                </div>
-            </div>
-        </form>
-        <footer class="footer top-bufferX20">
-            <div class="row">
-                <div class="col">
-                    <p>&copy; Kiran Gautam </p>
-                </div>
-                <div class="col text-right" hidden>
-                    <a onclick="" class="btn btn-social-icon btn-lg btn-facebook"><i class="fa fa-facebook"></i></a>
-                    <a onclick="" class="btn btn-social-icon btn-lg btn-linkedin"><i class="fa fa-linkedin"></i></a>
-                </div>
-            </div>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-        <script src="resources/js/index.js"></script>
+    <div class="jumbotron">
+        <h1>Tell me what to send to Slack!</h1>
+        <h4>#we-fish-sail-fish</h4>
     </div>
+
+    <form>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input required type="text" class="form-control" id="name" placeholder="Name">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Please input yout message message *</label>
+                    <textarea required class="form-control required" id="message" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Do you have any link to share?</label>
+                    <input type="text" class="form-control" id="link" placeholder="https://...">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <button class="btn btn-primary" id="submit" type="button" onclick="ajaxcall()">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <footer class="footer top-bufferX20">
+        <div class="row">
+            <div class="col">
+                <p>&copy; Kiran Gautam </p>
+            </div>
+            <div class="col text-right" hidden>
+                <a onclick="" class="btn btn-social-icon btn-lg btn-facebook"><i class="fa fa-facebook"></i></a>
+                <a onclick="" class="btn btn-social-icon btn-lg btn-linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="resources/js/index.js"></script>
 </body>
 
 </html>

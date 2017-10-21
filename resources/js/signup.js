@@ -103,7 +103,7 @@ jQuery(document).ready(function ($) {
         $form_signup_success.removeClass('is-selected');
     }
 
-    function success_selected(name, user) {
+    function success_selected_name(name, user) {
         $success_message.html('Welcome ' + capitalizeFirstLetter(name) + ', you are now registered.<br><h1>UserName: ' + user + '</h1>');
         $form_login.removeClass('is-selected');
         $form_signup.removeClass('is-selected');
@@ -113,7 +113,7 @@ jQuery(document).ready(function ($) {
     }
 
     function success_selected() {
-        $success_message.html('Welcome ');
+        $success_message.html('Welcome');
         $form_login.removeClass('is-selected');
         $form_signup.removeClass('is-selected');
         $form_forgot_password.removeClass('is-selected');
@@ -180,7 +180,7 @@ jQuery(document).ready(function ($) {
                 var status = xhr.status;
                 console.log('success');
                 console.log(result);
-                success_selected(result['firstName'], result['userName']);
+                success_selected_name(result['firstName'], result['userName']);
                 signupClear();
                 userSignUpErrorClear();
             },
@@ -219,7 +219,7 @@ jQuery(document).ready(function ($) {
                 userSignInErrorClear();
                 createCookie('userName', result['userName'], 1);
                 createCookie('firstName', result['firstName'], 1);
-                window.location.href = "jira.html";
+                window.location.href = "slate.html";
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log('not success');

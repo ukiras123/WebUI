@@ -57,7 +57,7 @@
             if (document.cookie == false || readCookie("userName") == null) {
                 console.log("No Cookie.");
             } else if (readCookie("userName") != null) {
-                window.location.href = "jira.html";
+                window.location.href = "slate.html";
             }
         }
         window.document.onload = checkCookie();
@@ -76,10 +76,7 @@
             <a id="nav-slack" class="nav-link" href="slack.html">Slack</a>
         </li>
         <li class="nav-item">
-            <a id="nav-slate" class="nav-link" href="slate.html">Slate</a>
-        </li>
-        <li class="nav-item">
-            <a id="nav-jira" class="nav-link active" href="jira-auth.html">Jira</a>
+            <a id="nav-jira" class="nav-link active" href="slate-auth.html">Slate</a>
         </li>
         <li class="nav-item">
             <a id="nav-about" class="nav-link" href="about.html">About</a>
@@ -177,22 +174,6 @@
                                 <a href="#0" class="hide-password">Show</a>
                                 <span class="cd-error-message">Error!</span>
                             </p>
-
-                            <p class="fieldset">
-                                <label class="image-replace cd-username" for="signup-jirauser">Jira Username</label>
-                                <input class="full-width has-padding has-border" id="signup-jirauser" type="text"
-                                       placeholder="Jira User Name">
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-                            <p class="fieldset">
-                                <label class="image-replace cd-password" for="signup-jirapass">Password</label>
-                                <input class="full-width has-padding has-border" id="signup-jirapass" type="password"
-                                       placeholder="Jira Password">
-                                <a href="#0" class="hide-password">Show</a>
-                                <span class="cd-error-message">Error!</span>
-                            </p>
-
-
                             <p class="fieldset">
                                 <input class="full-width has-padding" type="submit" value="Create account">
                             </p>

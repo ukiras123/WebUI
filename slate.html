@@ -14,9 +14,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.10.1/bootstrap-social.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="resources/css/comingSoon.css">
-
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/jiraPage.css">
 
 
     <script>
@@ -37,9 +37,47 @@
 
     </script>
 
+    <!-- JQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script>
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function checkCookie() {
+            console.log("Checking Cookie.");
+            if (document.cookie == false || readCookie("userName") == null) {
+                console.log("No Cookie.");
+                window.location.href = "slate-auth.html";
+            } else if (readCookie("userName") != null) {
+                console.log("You have Cookie.");
+            }
+        }
+
+        window.document.onload = checkCookie();
+
+        function welcome() {
+            $('#greetings').html('Welcome Home, ' + capitalizeFirstLetter(readCookie('firstName')) + '.' + '       Take automation to a whole new level.');
+        }
+    </script>
+
 </head>
 
-<body>
+<body onload='welcome()'>
 <div class="container">
     <ul class="nav nav-pills nav-fill nav-justified bottom-bufferX10">
         <li class="nav-item">
@@ -49,10 +87,7 @@
             <a id="nav-slack" class="nav-link" href="slack.html">Slack</a>
         </li>
         <li class="nav-item">
-            <a id="nav-slate" class="nav-link active" href="slate.html">Slate</a>
-        </li>
-        <li class="nav-item">
-            <a id="nav-jira" class="nav-link" href="jira-auth.html">Jira</a>
+            <a id="nav-jira" class="nav-link active" href="slate-auth.html">Slate</a>
         </li>
         <li class="nav-item">
             <a id="nav-about" class="nav-link" href="about.html">About</a>
@@ -61,24 +96,87 @@
     <hr>
 
 
-    <div class="jumbotron">
+    <div class='row'>
+        <div class='col'>
+
+            <header role="banner">
+                <div id="greetings">Welcome Home.</div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a class="cd-signout" href="#0" id="signout">Sign Out</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+        </div>
+    </div>
+
+    <form>
+
+        <div class='row'>
+            <div class='col-md-3'></div>
+            <div class='col-md-6'>
+                <label for="api-name"><strong>Select API to Test</strong></label>
+
+                <select id="api-name" class="form-control selectpicker">
+                    <option>Product API</option>
+                    <option>Fulfillment API</option>
+                    <option>Price List API</option>
+                    <option>Schedule API</option>
+                    <option>Continuity API</option>
+                    <option>Installment API</option>
+                    <option>Marketing API</option>
+                    <option>Price Model API</option>
+                    <option>Tiered Shipping API</option>
+                    <option>Product Shipping API</option>
+                    <option>Value Set API</option>
+                </select>
+            </div>
+        </div>
+        <div class='row top-bufferX10'>
+            <div class='col-md-3'></div>
+            <div class='col-md-3'>
+                <label for="branch"><strong>Select Branch</strong></label>
+                <input required type="text" class="form-control" id="branch" placeholder="integration">
+            </div>
+
+            <div class='col-md-3'>
+                <label for="email"><strong>Want a email report?</strong></label>
+                <input type="text" class="form-control" id="email" placeholder="email address">
+
+            </div>
+        </div>
         <div class="row">
+            <div class='col'>
+                <div class="col top-bufferX20 float-right">
+                    <button class="btn btn-primary float-md-right" id="smoke-test" type="button" onclick="ajaxcall()">
+                        Smoke Test
+                    </button>
+                </div>
+            </div>
+
             <div class="col">
-                <div class="soon">
-                    <h1>Coming Soon</h1>
-                    <div class="count">
-                        <h1 id="countdown" class="clock"></h1>
-                    </div>
+                <div class="col top-bufferX20 float-left">
+                    <button class="btn btn-primary float-md-left" id="regression" type="button" onclick="ajaxcall()">
+                        Full Regression
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class='row top-bufferX20'>
+        <div class='col'>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10"
+                     aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-    <div class="row" id="logo">
-        <footer class="footer top-bufferX20">
+    <footer class="footer top-bufferX20">
+        <div class="row">
             <div class="col">
                 <p>&copy; Kiran Gautam </p>
             </div>
@@ -86,17 +184,14 @@
                 <a onclick="" class="btn btn-social-icon btn-lg btn-facebook"><i class="fa fa-facebook"></i></a>
                 <a onclick="" class="btn btn-social-icon btn-lg btn-linkedin"><i class="fa fa-linkedin"></i></a>
             </div>
-        </footer>
-    </div>
-
-
+        </div>
+    </footer>
 </div>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-<script src="resources/js/comingSoon.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="resources/js/cookie.js"></script>
+<script src="resources/js/slatePage.js"></script>
 </body>
+
 
 </html>

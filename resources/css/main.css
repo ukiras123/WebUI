@@ -2,10 +2,6 @@
         text-align: center;
     }
 
-    button {
-        width: 100px;
-        height: 40px;
-    }
 
     .top-bufferX20 {
         margin-top: 20px;
@@ -15,13 +11,6 @@
         margin-top: 10px;
     }
 
-    .bottom-bufferX10 {
-        margin-bottom: 10px;
-    }
-
-    .bottom-bufferX10 {
-        margin-bottom: 10px;
-    }
     textarea {
         resize: none;
     }

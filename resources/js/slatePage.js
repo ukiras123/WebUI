@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
     $('#signout').on('click', function (event) {
         eraseCookie('userName');
         eraseCookie('firstName');
-        window.location.href = "jira-auth.html";
+        window.location.href = "slate-auth.html";
     });
 
 });
