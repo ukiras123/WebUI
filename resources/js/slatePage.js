@@ -70,7 +70,29 @@ function triggerRegression() {
     console.log(payload);
 
     disableFields();
+    $('.progress').show();
     $.ajax({
+        xhr: function() {
+            var xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener("progress", function(evt) {
+                if (evt.lengthComputable) {
+                    var percentComplete = (evt.loaded / evt.total)*100;
+                    console.log(percentComplete+'%');
+                    //Do something with upload progress here
+                    $('#progress-bars').width(percentComplete+'%');
+                }
+            }, false);
+
+            xhr.addEventListener("progress", function(evt) {
+                if (evt.lengthComputable) {
+                    var percentComplete = (evt.loaded / evt.total)*100;
+                    //Do something with download progress
+                    console.log(percentComplete);
+                    $('#progress-bars').width(percentComplete+'%');
+                }
+            }, false);
+            return xhr;
+        },
         type: 'POST',
         header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         contentType: 'application/json',
