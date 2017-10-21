@@ -117,19 +117,19 @@
             <div class='col-md-3'></div>
             <div class='col-md-6'>
                 <label for="api-name"><strong>Select API to Test</strong></label>
-
                 <select id="api-name" class="form-control selectpicker">
-                    <option>Product API</option>
-                    <option>Fulfillment API</option>
-                    <option>Price List API</option>
-                    <option>Schedule API</option>
-                    <option>Continuity API</option>
-                    <option>Installment API</option>
-                    <option>Marketing API</option>
-                    <option>Price Model API</option>
-                    <option>Tiered Shipping API</option>
-                    <option>Product Shipping API</option>
-                    <option>Value Set API</option>
+                    <option value="approved" selected>Approved</option>
+                    <option value="product">Product API</option>
+                    <option value="fulfillment">Fulfillment API</option>
+                    <option value="price">Price List API</option>
+                    <option value="schedule">Schedule API</option>
+                    <option value="continuity">Continuity API</option>
+                    <option value="installment">Installment API</option>
+                    <option value="marketing">Marketing API</option>
+                    <option value="price_model">Price Model API</option>
+                    <option value="tiered_shipping">Tiered Shipping API</option>
+                    <option value="product_shipping">Product Shipping API</option>
+                    <option value="value_set">Value Set API</option>
                 </select>
             </div>
         </div>
@@ -149,7 +149,8 @@
         <div class="row">
             <div class='col'>
                 <div class="col top-bufferX20 float-right">
-                    <button class="btn btn-primary float-md-right" id="smoke-test" type="button" onclick="ajaxcall()">
+                    <button class="btn btn-primary float-md-right" id="smoke-test-btn" type="button"
+                            onclick="triggerRegression()">
                         Smoke Test
                     </button>
                 </div>
@@ -157,7 +158,8 @@
 
             <div class="col">
                 <div class="col top-bufferX20 float-left">
-                    <button class="btn btn-primary float-md-left" id="regression" type="button" onclick="ajaxcall()">
+                    <button class="btn btn-primary float-md-left" id="regression-btn" type="button"
+                            onclick="triggerRegression()">
                         Full Regression
                     </button>
                 </div>
@@ -165,16 +167,32 @@
         </div>
     </form>
 
-    <div class='row top-bufferX20'>
+    <div class='row top-bufferX20 top-bufferX20'>
         <div class='col'>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10"
+                <div class="progress-bar progress-bar-striped" id="'progress-bar" hidden role="progressbar"
+                     style="width: 0%" aria-valuenow="0"
                      aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
         </div>
     </div>
 
+    <div class='row top-bufferX20 top-bufferX20' id="success-div" style="display:none">
+        <div class='col'>
+            <div class="alert alert-success">
+                <strong>Success!</strong> <span id="success-response"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class='row top-bufferX20 top-bufferX20' id="error-div" style="display:none">
+        <div class='col'>
+            <div class="alert alert-danger">
+                <strong>Failure!</strong> <span id="error-response">Span</span>
+            </div>
+        </div>
+    </div>
     <footer class="footer top-bufferX20">
         <div class="row">
             <div class="col">
