@@ -57,7 +57,22 @@ function showLoading() {
     $("#loading").css('visibility', 'visible');
 }
 
-function triggerRegression() {
+
+$('#regression-btn').click(function(event) {
+    automate(event.target.id);
+});
+
+$('#smoke-test-btn').click(function(event) {
+    automate(event.target.id);
+});
+
+
+function automate(id) {
+    var automationLevel = 'smoke';
+    if (id == 'regression-btn') {
+        automationLevel = 'regression'
+    }
+    console.log(this)
     hideResponseMessage();
     console.log("Inside Ajax")
 
@@ -73,7 +88,8 @@ function triggerRegression() {
     var payload = {
         "apiName": apiName,
         "branch": branch,
-        "email": email
+        "email": email,
+        "automationLevel": automationLevel
     }
     console.log(payload);
 
