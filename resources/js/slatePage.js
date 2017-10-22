@@ -112,10 +112,17 @@ function automate(id) {
         error: function(error) {
             hideLoading();
             console.log('error');
-            var errorBody = error.responseJSON;
-            console.log(errorBody.responseJSON);
-            $('#error-response').html(errorBody['errorMessage']);
-            $('#error-div').show();
+            console.log(error);
+            if (!(error['status'] == '0')) {
+                var errorBody = error.responseJSON;
+                console.log(errorBody.responseJSON);
+                $('#error-response').html(errorBody['errorMessage']);
+                $('#error-div').show();
+            } else
+            {
+                $('#error-response').html('Something went wrong. Please contact your administrator.');
+                $('#error-div').show();
+            }
             console.log(error.responseText); // @text = response error, it is will be errors: 324, 500, 404 or anythings else
             enableFields();
         }
