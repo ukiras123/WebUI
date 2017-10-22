@@ -16,7 +16,7 @@
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="resources/css/homepage.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/jiraPage.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/slatePage.css">
 
 
     <script>
@@ -167,18 +167,45 @@
         </div>
     </form>
 
-    <div class='row top-bufferX20 top-bufferX20'>
+    <div class='row top-bufferX-40' id="loading" style="visibility: hidden" >
         <div class='col'>
-            <div class="progress"  style="display:none">
-                <div class="progress-bar progress-bar-striped" id="progress-bar" role="progressbar"
-                     style="width: 0%" aria-valuenow="0"
-                     aria-valuemin="0" aria-valuemax="100">
-                </div>
+            <div class='contain'>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
+                <svg height='80' width='210'>
+                    <ellipse cx='25' cy='20' fill='none' rx='10' ry='10'></ellipse>
+                </svg>
             </div>
+
         </div>
     </div>
 
-    <div class='row top-bufferX20 top-bufferX20' id="success-div" style="display:none">
+    <div class='row' id="success-div" style="display:none">
         <div class='col'>
             <div class="alert alert-success">
                 <strong>Success!</strong> <span id="success-response"></span>
@@ -186,14 +213,15 @@
         </div>
     </div>
 
-    <div class='row top-bufferX20 top-bufferX20' id="error-div" style="display:none">
+    <div class='row' id="error-div" style="display:none">
         <div class='col'>
             <div class="alert alert-danger">
                 <strong>Failure!</strong> <span id="error-response"></span>
             </div>
         </div>
     </div>
-    <footer class="footer top-bufferX20">
+
+    <footer class="footer top-bufferX60">
         <div class="row">
             <div class="col">
                 <p>&copy; Kiran Gautam </p>

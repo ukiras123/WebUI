@@ -49,6 +49,14 @@ function hideResponseMessage() {
     $('#success-div').hide();
 }
 
+function hideLoading() {
+    $("#loading").css('visibility', 'hidden');
+}
+
+function showLoading() {
+    $("#loading").css('visibility', 'visible');
+}
+
 function triggerRegression() {
     hideResponseMessage();
     console.log("Inside Ajax")
@@ -70,35 +78,15 @@ function triggerRegression() {
     console.log(payload);
 
     disableFields();
-    $('.progress').show();
+    showLoading();
     $.ajax({
-        xhr: function() {
-            var xhr = new window.XMLHttpRequest();
-            xhr.upload.addEventListener("progress", function(evt) {
-                if (evt.lengthComputable) {
-                    var percentComplete = (evt.loaded / evt.total)*100;
-                    console.log(percentComplete+'%');
-                    //Do something with upload progress here
-                    $('#progress-bars').width(percentComplete+'%');
-                }
-            }, false);
-
-            xhr.addEventListener("progress", function(evt) {
-                if (evt.lengthComputable) {
-                    var percentComplete = (evt.loaded / evt.total)*100;
-                    //Do something with download progress
-                    console.log(percentComplete);
-                    $('#progress-bars').width(percentComplete+'%');
-                }
-            }, false);
-            return xhr;
-        },
         type: 'POST',
         header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         contentType: 'application/json',
         url: url,
         data: JSON.stringify(payload),
         success: function(data){
+            hideLoading();
             console.log('success');
             console.log(data);
             $('#success-response').html(data['text']);
@@ -106,6 +94,7 @@ function triggerRegression() {
             enableFields();
         },
         error: function(error) {
+            hideLoading();
             console.log('error');
             var errorBody = error.responseJSON;
             console.log(errorBody.responseJSON);
