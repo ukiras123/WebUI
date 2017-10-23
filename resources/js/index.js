@@ -38,7 +38,7 @@ function ajaxcall() {
         $('#link').css('border-color','').val('');
         $.ajax({
             type: 'POST',
-            url: kiran_url,
+            url: default_url,
             data: JSON.stringify(payload),
             header: { 'Content-Type': 'application/json' }
         }).then(function(result) {
