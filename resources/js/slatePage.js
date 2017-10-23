@@ -105,7 +105,7 @@ function automate(id) {
             hideLoading();
             console.log('success');
             console.log(data);
-            $('#success-response').html(data['text']);
+            $('#success-response').html('<a href='+data['text']+'>Click Here for Report</a>');
             $('#success-div').show();
             enableFields();
         },
