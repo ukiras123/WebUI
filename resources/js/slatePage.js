@@ -78,7 +78,7 @@ function automate(id) {
 
     var apiName = $('#api-name').find(":selected").val();
     var branch = $('#branch').val();
-    var url = "http://9a5d5e5d.ngrok.io/automation";
+    var url = "http://5829acf5.ngrok.io/automation";
 
     if (branch == '') {
         branch = 'integration';
